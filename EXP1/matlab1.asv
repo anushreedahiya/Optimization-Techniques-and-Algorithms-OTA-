@@ -1,0 +1,60 @@
+% a=5; b=3; c=a+b;
+
+% Row vector
+% a=[1 2 3 4 5]
+% b=[2 3 4 5 6]
+% c=a+b
+
+% Column vector
+% d=[1; 2; 3; 4; 5]
+% e=[2; 3; 4; 5; 6]
+% f=d+e
+
+% Matrices
+% x=[1 2 5; 3 4 5]
+% y=[2 3 6; 4 5 6]
+% z=x+y
+% z(2,2) % index start from 1
+% z(2,:) % to access 2nd row
+% global x  
+% here we have specified x as global variable so can be used as it is through out
+
+% prompt="Enter a number: ";
+% g=input(prompt, "s");   
+% % s makes it as string as expression will be printed as it is
+% display(g)
+% 
+% prompt="Enter a number: ";
+% h=input(prompt);
+% display(h)
+
+% loops
+a=20;
+while(a < 30)
+    disp(a);
+    a=a+1;
+end
+
+for r=10:2:20  % start_value:increment/decrement:end_value
+    disp(r);
+end
+
+b=1;
+while(b < 10)
+    disp(b);
+    b = b + 1;
+        if (b==5)
+            break;
+        end
+end
+
+% in switch we have an otherwise case here instead of default case
+prompt="Enter a character: ";
+grade=input(prompt,"s");
+switch(grade)
+    case 'A'
+        fprintf('Well Done\n');
+    case 'B'
+        fprintf('Nice\n');
+    otherwise
+        fprintf('Well Done\n');
