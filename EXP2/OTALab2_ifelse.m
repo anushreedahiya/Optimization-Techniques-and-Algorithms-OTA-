@@ -1,0 +1,106 @@
+prompt="Enter a numbr:";
+a=input(prompt);
+if a>0
+    disp('Positive Number');
+elseif a<0
+    disp('Negative Number');
+else
+    disp("Zero");
+end
+
+
+% rand
+% ans =
+% 
+%     0.8147
+% 
+% b=rand
+% b =
+% 
+%     0.9058
+% 
+% rand(5)
+% 
+% ans =
+%     0.1270    0.5469    0.9572    0.9157    0.8491
+%     0.9134    0.9575    0.4854    0.7922    0.9340
+%     0.6324    0.9649    0.8003    0.9595    0.6787
+%     0.0975    0.1576    0.1419    0.6557    0.7577
+%     0.2785    0.9706    0.4218    0.0357    0.7431
+% 
+% rand(2,5)
+% 
+% ans =
+% 
+%     0.3922    0.1712    0.0318    0.0462    0.8235
+%     0.6555    0.7060    0.2769    0.0971    0.6948
+% 
+% Random number between 0 to 5
+% 5*rand(2,5)
+% 
+% ans =
+% 
+%     1.5855    0.1722    1.9078    3.9760    2.4488
+%     4.7511    2.1937    3.8276    0.9344    2.2279
+% 
+% Random number between 10 to 20
+% 10+10*rand
+% 
+% ans =
+% 
+%    10.0672
+% 
+% 10+10*rand(1,3)
+% 
+% ans =
+% 
+%    16.0217   13.8677   19.1599
+%
+% randi +random interger and generate interger random number only
+% randi([imin, imax], m, n)    by default start from 1 that is lower bound
+% randi(10)
+% 
+% ans =
+% 
+%      1
+% 
+% random number between 1 to 10 with 1 row and 5 column
+% randi(10, 1, 5)
+% 
+% ans =
+% 
+%      5     5     5     8     4
+% 
+% random number between 10 to 20 with 1 row and 5 column
+% randi([10,20],1,5)
+% 
+% ans =
+% 
+%     18    15    10    11    17
+%
+% randperm= random permutation (1=lower bound)
+% repetation is not there, and all number included
+% randperm(10)
+% 
+% ans =
+% 
+%      2     5     7     9     3     1     4     6    10     8
+% 
+% 5 numbers are excluded
+% randperm(10,5)
+% 
+% ans =
+% 
+%      1     5     7     9     2
+%
+% to generate a graph or 2D space like area
+random_array = generate_random_number(10, 2, -100, 100);
+
+figure;
+scatter(random_array(:,1), random_array(:,2), 'filled');
+xlabel('Dimension 1');
+ylabel('Dimension 2');
+title('2D Plot')
+grid on;
+
+

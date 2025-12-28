@@ -1,0 +1,15 @@
+% Generate random number between 1 and 100 and printng odd or even
+% a = 1+100*rand(2,5)
+num = randi([1, 100]);
+disp(['Random Number: ', num2str(num)]);   % we can't d
+if mod(num,2) == 0
+    disp('Number generated is even.');
+else
+    disp('Number generated is odd.');
+end
+
+
+% 
+% random_array = generate_random_number(10, 2, -100, 100);
+
+
