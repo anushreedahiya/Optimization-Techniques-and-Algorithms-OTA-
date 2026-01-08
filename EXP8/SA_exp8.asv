@@ -1,0 +1,83 @@
+% questi
+clc;
+clear;
+close all;
+
+% Parameters
+D = 5;                % Dimension
+LB = -10;
+UB = 10;
+T_max = 100;
+T_min = 1e-3;
+a = 0.95;             % cooling rate
+i_max = 100;          % total number of iterations per temp
+MaxNFE = 10000;
+K = 1;
+runs = 20;            % number of independent runs
+
+f = @(x) sum(x.^2);   % Objective function
+
+% running the algorithm for multiple times
+all_records = [];  
+
+for r = 1:runs
+    % Initialization
+    x = LB + (UB - LB) * rand(1, D);
+    E_old = f(x);
+
+    best = E_old;
+    best_x = x;
+
+    record = [];
+    nfe = 1;
+    t = T_max;
+
+    % main loop
+    while t >= T_min && nfe <= MaxNFE
+        for i = 1:i_max
+            if nfe > MaxNFE
+                break;
+            end
+
+            % successor function
+            x_new = x + (UB - LB) .* (rand(1, D) - 0.5);
+
+            E_new = f(x_new);
+            delta = E_new - E_old;
+
+            % acceptance rule
+            if (delta < 0 || rand < exp(-delta / (K * t)))
+                x = x_new;
+                E_old = E_new;
+            end
+
+            % global best
+            if E_new < best
+                best = E_new;
+                best_x = x_new;
+            end
+
+            % record every 100 NFEs
+            if mod(nfe,100) == 0
+                record(end+1) = best;
+            end
+
+            nfe = nfe + 1;
+        end
+        t = t * a; % cooling
+    end
+
+    % Store results from this run
+    all_records(r,:) = record;
+end
+
+% Compute average across runs
+avg_record = mean(all_records,1);
+
+% Plot
+figure;
+plot(100:100:100*length(avg_record), avg_record,'-o','LineWidth',2);
+xlabel('Number of Function Evaluations');
+ylabel('Average Best Objective Value');
+title('Simulated Annealing (Average over 20 runs)');
+grid on;
